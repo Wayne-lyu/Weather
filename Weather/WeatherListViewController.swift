@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class WeatherListViewController: UIViewController {
 
@@ -19,7 +20,12 @@ class WeatherListViewController: UIViewController {
     }
 
     @objc private func didTapDone() {
-        print("locating")
+        Alamofire.request("https://api.darksky.net/forecast/c3058f0521895f96e24491029a21f763/42.3601,-71.0589")
+            .responseData { response in
+                print(response.request as Any)
+                print(response.response as Any)
+                print(response.result)
+        }
     }
 
     private func setupUI() {
