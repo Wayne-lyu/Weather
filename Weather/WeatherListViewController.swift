@@ -22,9 +22,15 @@ class WeatherListViewController: UIViewController {
     @objc private func didTapDone() {
         Alamofire.request("https://api.darksky.net/forecast/c3058f0521895f96e24491029a21f763/42.3601,-71.0589")
             .responseData { response in
-                print(response.request as Any)
-                print(response.response as Any)
-                print(response.result)
+
+                switch response.result {
+                case let .success(data):
+                    let decoder = JSONDecoder()
+                    let weather = try? decoder.decode(Forecast.self, from: data)
+                    print(weather?.latitude ?? 0)
+                case let .failure(error):
+                    dump(error)
+                }
         }
     }
 
