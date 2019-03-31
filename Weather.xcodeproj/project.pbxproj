@@ -14,7 +14,6 @@
 		E499E30C224A7EE4009C3A05 /* WeatherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E499E30B224A7EE4009C3A05 /* WeatherListViewController.swift */; };
 		E499E30E224A7F04009C3A05 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E499E30D224A7F04009C3A05 /* WeatherDetailViewController.swift */; };
 		E499E312224A856D009C3A05 /* CompactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E499E311224A856D009C3A05 /* CompactTableViewCell.swift */; };
-		E499E314224A884E009C3A05 /* RichTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E499E313224A884E009C3A05 /* RichTableViewCell.swift */; };
 		E4AB6017224DD11300493083 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6016224DD11300493083 /* UIConstants.swift */; };
 		E4AB601A224DF00300493083 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AB6019224DF00300493083 /* Alamofire.framework */; };
 		E4AB6022224E2E7800493083 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6021224E2E7800493083 /* Forecast.swift */; };
@@ -48,7 +47,6 @@
 		E499E30B224A7EE4009C3A05 /* WeatherListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewController.swift; sourceTree = "<group>"; };
 		E499E30D224A7F04009C3A05 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		E499E311224A856D009C3A05 /* CompactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTableViewCell.swift; sourceTree = "<group>"; };
-		E499E313224A884E009C3A05 /* RichTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichTableViewCell.swift; sourceTree = "<group>"; };
 		E4AB6016224DD11300493083 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		E4AB6019224DF00300493083 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		E4AB6021224E2E7800493083 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				E499E311224A856D009C3A05 /* CompactTableViewCell.swift */,
-				E499E313224A884E009C3A05 /* RichTableViewCell.swift */,
 				E4AB6016224DD11300493083 /* UIConstants.swift */,
 			);
 			path = View;
@@ -312,7 +309,6 @@
 				E4AB602A224E4D0900493083 /* Icon.swift in Sources */,
 				E499E312224A856D009C3A05 /* CompactTableViewCell.swift in Sources */,
 				E4AB603522504D1500493083 /* LocationService.swift in Sources */,
-				E499E314224A884E009C3A05 /* RichTableViewCell.swift in Sources */,
 				E499E30E224A7F04009C3A05 /* WeatherDetailViewController.swift in Sources */,
 				E499E2EC224A7DBE009C3A05 /* AppDelegate.swift in Sources */,
 			);

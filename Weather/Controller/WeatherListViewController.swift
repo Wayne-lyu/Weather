@@ -46,8 +46,9 @@ class WeatherListViewController: UIViewController {
                                           longitude: coordiate.longitude) { result in
             switch result {
             case .success(let forecast):
-                self.list.insert(forecast)
-                self.tableView.reloadData()
+                if self.list.insert(forecast).inserted {
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
                 print(error)
             }
@@ -62,9 +63,7 @@ class WeatherListViewController: UIViewController {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
-
         tableView.register(CompactTableViewCell.self, forCellReuseIdentifier: "CompactCell")
-        tableView.register(RichTableViewCell.self, forCellReuseIdentifier: "RichCell")
 
         view.addSubview(tableView)
         view.backgroundColor = UIColor.white
@@ -92,21 +91,22 @@ extension WeatherListViewController: UITableViewDataSource, UITableViewDelegate 
             let temperature = forecast.currently?.apparentTemperature {
             cell.titleLabel.text = "\(temperature)˚ \(summary)"
         }
-        if let temperatureLow = forecast.daily?.data[0].temperatureLow,
-            let temperatureHigh =  forecast.daily?.data[0].temperatureHigh{
+        if let temperatureLow = forecast.daily?.data.first?.temperatureLow,
+            let temperatureHigh =  forecast.daily?.data.first?.temperatureHigh{
             cell.subTitleLabel.text = "Low:\(temperatureLow)˚ High:\(temperatureHigh)˚"
         }
 
         return cell
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
-        return UITableView.automaticDimension
-    }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        self.navigationController?.pushViewController(WeatherDetailViewController(), animated: true)
+        guard let daily = Array(list)[indexPath.row].daily?.data else {
+            return
+        }
+
+        let detailVC = WeatherDetailViewController()
+        detailVC.list = daily
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

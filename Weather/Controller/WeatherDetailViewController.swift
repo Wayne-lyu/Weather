@@ -10,19 +10,24 @@ import UIKit
 class WeatherDetailViewController: UIViewController {
 
     var tableView: UITableView!
-    var list: [String] = []
+    var list: [DataPoint] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
 
-        self.navigationItem.title = "Detail"
+    private func setupUI() {
 
-        tableView = UITableView(frame:CGRect(x:0, y:0, width:UIScreen.main.bounds.width, height:UIScreen.main.bounds.height))
+        navigationItem.title = "Week"
+
+        tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
 
-        self.view.addSubview(tableView)
-        self.view.backgroundColor = UIColor.white
+        view.addSubview(tableView)
+        view.backgroundColor = UIColor.white
     }
 
 }
@@ -30,18 +35,19 @@ class WeatherDetailViewController: UIViewController {
 extension WeatherDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return list.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: "CellIdentifier")
-        cell.textLabel?.text = list[indexPath.row]
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd"
+        let date = dateFormatter.string(from: list[indexPath.row].time)
+        let summary = list[indexPath.row].summary
+        cell.textLabel?.text =  "\(date)  \(summary!)"
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        self.navigationController?.pushViewController(WeatherDetailViewController(), animated: true)
     }
     
 }
