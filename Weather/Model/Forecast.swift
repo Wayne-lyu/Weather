@@ -8,7 +8,7 @@
 import Foundation
 
 /// The weather data for a location at a specific time.
-public struct Forecast: Decodable {
+public struct Forecast: Decodable, Hashable {
 
     /// The requested latitude.
     public let latitude: Double
@@ -43,7 +43,16 @@ public struct Forecast: Decodable {
         /// Miscellaneous metadata.
         case flags = "flags"
     }
-    
+
+    public static func == (lhs: Forecast, rhs: Forecast) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(latitude)
+        hasher.combine(longitude)
+    }
+
 }
 
 

@@ -22,6 +22,8 @@
 		E4AB6026224E4BA800493083 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6025224E4BA800493083 /* DataPoint.swift */; };
 		E4AB6028224E4BE700493083 /* DataBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6027224E4BE700493083 /* DataBlock.swift */; };
 		E4AB602A224E4D0900493083 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6029224E4D0900493083 /* Icon.swift */; };
+		E4AB603322504D0500493083 /* DarkSkyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB603222504D0500493083 /* DarkSkyService.swift */; };
+		E4AB603522504D1500493083 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB603422504D1500493083 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		E4AB6025224E4BA800493083 /* DataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
 		E4AB6027224E4BE700493083 /* DataBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBlock.swift; sourceTree = "<group>"; };
 		E4AB6029224E4D0900493083 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		E4AB603222504D0500493083 /* DarkSkyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyService.swift; sourceTree = "<group>"; };
+		E4AB603422504D1500493083 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +101,10 @@
 		E499E2EA224A7DBE009C3A05 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				E499E30B224A7EE4009C3A05 /* WeatherListViewController.swift */,
-				E499E30D224A7F04009C3A05 /* WeatherDetailViewController.swift */,
+				E4AB603122504CDD00493083 /* Controller */,
 				E499E310224A8550009C3A05 /* View */,
 				E4AB6020224E2E5F00493083 /* Model */,
-				E4AB601D224DF94800493083 /* Service */,
+				E4AB603022504CCB00493083 /* Service */,
 				E499E30F224A83BA009C3A05 /* Resources */,
 			);
 			path = Weather;
@@ -130,9 +133,9 @@
 		E499E310224A8550009C3A05 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E4AB6016224DD11300493083 /* UIConstants.swift */,
 				E499E311224A856D009C3A05 /* CompactTableViewCell.swift */,
 				E499E313224A884E009C3A05 /* RichTableViewCell.swift */,
+				E4AB6016224DD11300493083 /* UIConstants.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -145,23 +148,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E4AB601D224DF94800493083 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		E4AB6020224E2E5F00493083 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E4AB6021224E2E7800493083 /* Forecast.swift */,
-				E4AB6023224E4B5400493083 /* Alert.swift */,
 				E4AB6025224E4BA800493083 /* DataPoint.swift */,
 				E4AB6027224E4BE700493083 /* DataBlock.swift */,
+				E4AB6023224E4B5400493083 /* Alert.swift */,
 				E4AB6029224E4D0900493083 /* Icon.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E4AB603022504CCB00493083 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E4AB603222504D0500493083 /* DarkSkyService.swift */,
+				E4AB603422504D1500493083 /* LocationService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E4AB603122504CDD00493083 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E499E30B224A7EE4009C3A05 /* WeatherListViewController.swift */,
+				E499E30D224A7F04009C3A05 /* WeatherDetailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4AB6024224E4B5400493083 /* Alert.swift in Sources */,
+				E4AB603322504D0500493083 /* DarkSkyService.swift in Sources */,
 				E4AB6022224E2E7800493083 /* Forecast.swift in Sources */,
 				E4AB6026224E4BA800493083 /* DataPoint.swift in Sources */,
 				E499E30C224A7EE4009C3A05 /* WeatherListViewController.swift in Sources */,
@@ -296,6 +311,7 @@
 				E4AB6028224E4BE700493083 /* DataBlock.swift in Sources */,
 				E4AB602A224E4D0900493083 /* Icon.swift in Sources */,
 				E499E312224A856D009C3A05 /* CompactTableViewCell.swift in Sources */,
+				E4AB603522504D1500493083 /* LocationService.swift in Sources */,
 				E499E314224A884E009C3A05 /* RichTableViewCell.swift in Sources */,
 				E499E30E224A7F04009C3A05 /* WeatherDetailViewController.swift in Sources */,
 				E499E2EC224A7DBE009C3A05 /* AppDelegate.swift in Sources */,

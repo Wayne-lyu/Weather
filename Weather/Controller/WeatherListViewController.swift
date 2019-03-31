@@ -6,31 +6,51 @@
 //
 
 import UIKit
-import Alamofire
 
 class WeatherListViewController: UIViewController {
 
     private var tableView: UITableView!
-    private var list: [String] = ["LA", "SH"]
+    private var list = Set<Forecast>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onNewLocation),
+                                               name: .newLocation,
+                                               object: nil)
     }
 
-    @objc private func didTapDone() {
-        Alamofire.request("https://api.darksky.net/forecast/c3058f0521895f96e24491029a21f763/42.3601,-71.0589")
-            .responseData { response in
+    @objc
+    private func didTapDone() {
 
-                switch response.result {
-                case let .success(data):
-                    let decoder = JSONDecoder()
-                    let weather = try? decoder.decode(Forecast.self, from: data)
-                    print(weather?.latitude ?? 0)
-                case let .failure(error):
-                    dump(error)
-                }
+        if !LocationService.isLocationServicesEnabled() {
+
+            LocationService.shared.requestPermissionsOrRedirectIfNeeded()
+        } else {
+
+            LocationService.shared.requestLocation()
+        }
+    }
+
+    @objc
+    private func onNewLocation() {
+
+        guard let coordiate = LocationService.shared.currentUserLocation?.coordinate else {
+            return
+        }
+
+        DarkSkyService.shared.getForecast(latitude: coordiate.latitude,
+                                          longitude: coordiate.longitude) { result in
+            switch result {
+            case .success(let forecast):
+                self.list.insert(forecast)
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 
@@ -62,8 +82,14 @@ extension WeatherListViewController: UITableViewDataSource, UITableViewDelegate 
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "CompactCell", for: indexPath) as!
             CompactTableViewCell
-        cell.titleLabel.text = list[indexPath.row]
-        cell.subTitleLabel.text = "100"
+
+        let forecast = Array(list)[indexPath.row]
+        if let summary = forecast.daily?.summary {
+            cell.titleLabel.text = summary
+        }
+        if let apparentTemperature = forecast.currently?.apparentTemperature {
+            cell.subTitleLabel.text = String(apparentTemperature)
+        }
 
         return cell
     }
