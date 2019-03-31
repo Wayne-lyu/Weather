@@ -84,11 +84,17 @@ extension WeatherListViewController: UITableViewDataSource, UITableViewDelegate 
             CompactTableViewCell
 
         let forecast = Array(list)[indexPath.row]
-        if let summary = forecast.daily?.summary {
-            cell.titleLabel.text = summary
+
+        if let icon = forecast.daily?.icon {
+            cell.imageView?.image = UIImage(named: icon.rawValue)
         }
-        if let apparentTemperature = forecast.currently?.apparentTemperature {
-            cell.subTitleLabel.text = String(apparentTemperature)
+        if let summary = forecast.currently?.summary,
+            let temperature = forecast.currently?.apparentTemperature {
+            cell.titleLabel.text = "\(temperature)˚ \(summary)"
+        }
+        if let temperatureLow = forecast.daily?.data[0].temperatureLow,
+            let temperatureHigh =  forecast.daily?.data[0].temperatureHigh{
+            cell.subTitleLabel.text = "Low:\(temperatureLow)˚ High:\(temperatureHigh)˚"
         }
 
         return cell

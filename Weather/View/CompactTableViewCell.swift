@@ -22,6 +22,7 @@ class CompactTableViewCell: UITableViewCell {
     lazy var iconImage: UIImageView = {
 
         let iconImage = UIImageView()
+        iconImage.contentMode = .scaleToFill
         contentView.addSubview(iconImage)
 
         return iconImage

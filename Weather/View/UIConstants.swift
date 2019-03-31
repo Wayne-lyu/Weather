@@ -14,9 +14,9 @@ public struct Margin {
 }
 
 public struct FontSize {
-    static let S: CGFloat = 12.0
-    static let M: CGFloat = 14.0
-    static let L: CGFloat = 16.0
+    static let S: CGFloat = 16.0
+    static let M: CGFloat = 20.0
+    static let L: CGFloat = 24.0
 }
 
 
