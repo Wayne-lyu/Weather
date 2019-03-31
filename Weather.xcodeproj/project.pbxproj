@@ -23,6 +23,7 @@
 		E4AB602A224E4D0900493083 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6029224E4D0900493083 /* Icon.swift */; };
 		E4AB603322504D0500493083 /* DarkSkyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB603222504D0500493083 /* DarkSkyService.swift */; };
 		E4AB603522504D1500493083 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB603422504D1500493083 /* LocationService.swift */; };
+		E4BD3AD82250ECC9000B6982 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AB6019224DF00300493083 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BD3AD82250ECC9000B6982 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +510,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -528,6 +534,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

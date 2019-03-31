@@ -21,13 +21,22 @@ class WeatherTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+        DarkSkyService.shared.getForecast(latitude: 34, longitude: 118) { result in
+            if let forecast = result.value {
+                XCTAssert(forecast.latitude == 34)
+                XCTAssert(forecast.longitude == 118)
+            }
+        }
     }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+            DarkSkyService.shared.getForecast(latitude: 34, longitude: 118) { result in
+            }
         }
     }
-
+    
 }
