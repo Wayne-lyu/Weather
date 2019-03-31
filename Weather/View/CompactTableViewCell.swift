@@ -50,7 +50,6 @@ class CompactTableViewCell: UITableViewCell {
 
     static let ImageWith: CGFloat = 60
     static let ImageHeight: CGFloat = 60
-    static let CellHeight: CGFloat = 100
 
     private func setupUI() {
 
@@ -82,8 +81,9 @@ class CompactTableViewCell: UITableViewCell {
         subTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
                                               constant: -Margin.M).isActive = true
 
-        self.contentView.heightAnchor.constraint(equalToConstant: CompactTableViewCell.CellHeight).isActive = true
         self.backgroundColor = .white
         self.selectionStyle = .none
+        self.separatorInset = .zero
+        self.layoutMargins = .zero
     }
 }

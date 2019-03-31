@@ -9,12 +9,12 @@ import UIKit
 
 class WeatherDetailViewController: UIViewController {
 
-    var tableView: UITableView!
+    private var tableView: UITableView!
     var list: [DataPoint] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupUI()
     }
 
